@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BluetoothRemote</string>
+    <string name="refresh_button">REFRESH</string>
+    <string name="move_forward">MOVE FORWARD</string>
+    <string name="move_backward">MOVE BACKWARD</string>
+    <string name="move_left">MOVE LEFT</string>
+    <string name="move_right">MOVE RIGHT</string>
+    <string name="disconnect">DISCONNECT</string>
+</resources>
