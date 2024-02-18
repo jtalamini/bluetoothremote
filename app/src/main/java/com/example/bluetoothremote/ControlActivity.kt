@@ -41,20 +41,21 @@ class ControlActivity: AppCompatActivity() {
 
         ConnectToDevice(this).execute()
 
+        var interval = 200
 
         var joystickLeftView: JoystickView = findViewById(R.id.joystickView_left)
-        joystickLeftView.setOnMoveListener{ angle, strength ->
+        joystickLeftView.setOnMoveListener({ angle, strength ->
             // do whatever you want
             // Log.d("LEFT", ">>>>>>>>>>>>>>>>>>> LEFT: angle = "+angle+ " | strength = "+strength)
             sendCommand("l:"+angle+":"+strength+":\n")
-        }
+        },interval)
 
         var joystickRightView: JoystickView = findViewById(R.id.joystickView_right)
-        joystickRightView.setOnMoveListener{ angle, strength ->
+        joystickRightView.setOnMoveListener({ angle, strength ->
             // do whatever you want
             // Log.d("RIGHT", ">>>>>>>>>>>>>>>>>>> RIGHT: angle = "+angle+ " | strength = "+strength)
             sendCommand("r:"+angle+":"+strength+":\n")
-        }
+        }, interval)
 
         /*
         // add listeners to buttons
@@ -80,7 +81,9 @@ class ControlActivity: AppCompatActivity() {
         if (bluetoothSocket != null) {
             try {
                 bluetoothSocket!!.outputStream.write(input.toByteArray())
-                bluetoothSocket!!.outputStream.flush()
+                // bluetoothSocket!!.outputStream.write("A\n".toByteArray())
+                // Log.d("DEBUGGGGGG", ">>>>>>>>>>>>>>>>>>>SENDING: "+input);
+                // bluetoothSocket!!.outputStream.flush()
             } catch (e: IOException) {
                 e.printStackTrace()
             }
